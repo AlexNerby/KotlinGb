@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">KotlinGb</string>
+
+<!--delete in other lessons-->
+    <string name="button_lesson_1">Button</string>
+    <string name="button_start_lesson_1">start</string>
+    <string name="button_stop_lesson_1">stop</string>
+
 </resources>
