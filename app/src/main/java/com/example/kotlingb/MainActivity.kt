@@ -1,16 +1,19 @@
-package com.example.kotlingb;
+package com.example.kotlingb
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 
-import android.os.Bundle;
+class MainActivity : AppCompatActivity() {
 
-public class MainActivity extends AppCompatActivity {
+    companion object {
+        const val TAG = "KotlinGbMainActivity"
+    }
 
-    public static final String TAG = "KotlinGbMainActivity";
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        Log.d(TAG, "onCreate")
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
     }
 }
