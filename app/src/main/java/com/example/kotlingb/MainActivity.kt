@@ -9,30 +9,29 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val LOG = true
-        const val TAG = "KotlinGbMainActivity"
     }
 
-    private var isStart = true
+    private val TAG = "KotlinGbMainActivity"
 
+    private var isStart = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d(TAG, "onCreate")
+        Log.v(TAG, "onCreate")
 
         val buttonLessonOne = findViewById<Button>(R.id.button)
         buttonLessonOne.setOnClickListener {
             if (LOG) {
-                Log.v(TAG, "buttonLessonOne.setOnClickListener")
+                Log.d(TAG, "buttonLessonOne.setOnClickListener")
             }
 
             if (isStart) {
                 buttonLessonOne.text = getString(R.string.button_start_lesson_1)
-                isStart = false
             } else {
                 buttonLessonOne.text = getString(R.string.button_stop_lesson_1)
-                isStart = true
             }
+            isStart = !isStart
         }
     }
 }
