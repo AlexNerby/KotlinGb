@@ -7,12 +7,13 @@
     android:layout_height="wrap_content"
     android:backgroundTint="@color/purple_200"
     app:cardCornerRadius="@dimen/card_radius_12dp"
-    android:layout_marginBottom="@dimen/card_marginbottom_5dp">
+    app:contentPadding="@dimen/recycler_padding_10dp"
+    android:layout_marginBottom="@dimen/card_marginbottom_5dp"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/card_padding_15dp"
         >
 
         <TextView
