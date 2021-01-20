@@ -1,9 +1,10 @@
-package com.example.kotlingb
+package com.example.kotlingb.ui.main
 
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlingb.R
 
 class MainActivity : AppCompatActivity() {
 
