@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/outline_min"
-    app:contentPadding="@dimen/card_padding"
     app:cardCornerRadius="@dimen/cornerRadius"
-    app:cardElevation="@dimen/card_elevation">
+    app:cardElevation="@dimen/card_elevation"
+    app:contentPadding="@dimen/card_padding">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,6 +21,8 @@
             android:layout_height="wrap_content"
             android:text="@string/test_title"
             android:textSize="@dimen/title"
+            android:ellipsize="end"
+            android:lines="2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,8 +30,10 @@
             android:id="@+id/text_main_item"
             style="@style/TextAppearance.AppCompat"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/text_separator"
+            android:ellipsize="end"
+            android:lines="3"
             android:text="@string/test_text"
             android:textSize="@dimen/card_text"
             app:layout_constraintStart_toStartOf="parent"
