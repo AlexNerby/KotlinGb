@@ -9,4 +9,5 @@
     <dimen name="outline_min">5dp</dimen>
     <dimen name="cornerRadius">10dp</dimen>
     <dimen name="card_elevation">7dp</dimen>
+    <dimen name="floating_padding">10dp</dimen>
 </resources>

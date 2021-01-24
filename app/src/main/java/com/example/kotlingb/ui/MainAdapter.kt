@@ -60,6 +60,7 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener): Recycle
 
             }
             ui.cardViewNote.setCardBackgroundColor(itemView.context.resources.getColor(color))
+//            ui.cardViewNote.setBackgroundResource(color)  //не работает cornerRadius
             itemView.setOnClickListener { onItemClickListener.onItemClick(note) }
         }
     }
