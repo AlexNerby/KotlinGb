@@ -2,6 +2,7 @@
     <string name="app_name">KotlinGb</string>
     <string name="test_title">Test Title</string>
     <string name="test_text">Test Text Test Text Test Text Test Text Test Text Test Text Test Text Test Text</string>
+    <string name="hint_create_note">Заголовок</string>
 
 
 </resources>

@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view_note"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/purple_200"
-    app:cardCornerRadius="@dimen/card_radius_12dp"
-    app:contentPadding="@dimen/recycler_padding_10dp"
-    android:layout_marginBottom="@dimen/card_marginbottom_5dp"
-    >
+    android:layout_margin="@dimen/outline_min"
+    app:contentPadding="@dimen/card_padding"
+    app:cardCornerRadius="@dimen/cornerRadius"
+    app:cardElevation="@dimen/card_elevation">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/title_main_item"
@@ -22,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/test_title"
-            android:textSize="@dimen/title_26sp"
+            android:textSize="@dimen/title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,9 +29,9 @@
             style="@style/TextAppearance.AppCompat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_separator"
             android:text="@string/test_text"
-            android:layout_marginTop="@dimen/card_topmargin_text"
-            android:textSize="@dimen/text_18sp"
+            android:textSize="@dimen/card_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_main_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>

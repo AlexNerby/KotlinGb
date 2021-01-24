@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlingb.R
 import com.example.kotlingb.model.Note
@@ -43,11 +44,13 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.NoteViewHolder>() {
     class NoteViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val title = itemView.findViewById<TextView>(R.id.title_main_item)
         private val text = itemView.findViewById<TextView>(R.id.text_main_item)
+        private val cardView = itemView.findViewById<CardView>(R.id.card_view_note)
 
         fun bind(note: Note) {
+
             title.text = note.title
             text.text = note.note
-            itemView.setBackgroundColor(note.color)
+            cardView.setCardBackgroundColor(note.color)
         }
     }
 }
