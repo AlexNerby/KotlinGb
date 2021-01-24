@@ -8,28 +8,28 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlingb.R
+import com.example.kotlingb.databinding.MainItemBinding
+import com.example.kotlingb.model.Color
 import com.example.kotlingb.model.Note
 
-class MainAdapter: RecyclerView.Adapter<MainAdapter.NoteViewHolder>() {
+interface OnItemClickListener {
+    fun onItemClick(note: Note)
+}
+
+class MainAdapter(private val onItemClickListener: OnItemClickListener): RecyclerView.Adapter<MainAdapter.NoteViewHolder>() {
     private val TAG = "KotlinGbMainAdapter"
 
-    init {
-        Log.d(TAG, "init adapter")
-    }
-
-    var  notes: List<Note> = listOf()
-    set(value) {
-        Log.d(TAG, "setter adapter")
-        field = value
-        notifyDataSetChanged()
-    }
-
+    var notes: List<Note> = listOf()
+        set(value) {
+            Log.d(TAG, "setter adapter")
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         Log.d(TAG, "onCreateViewHolder")
         val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.main_item, parent, false)
-
         return NoteViewHolder(view)
     }
 
@@ -41,16 +41,26 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.NoteViewHolder>() {
 
     override fun getItemCount(): Int = notes.size
 
-    class NoteViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private val title = itemView.findViewById<TextView>(R.id.title_main_item)
-        private val text = itemView.findViewById<TextView>(R.id.text_main_item)
-        private val cardView = itemView.findViewById<CardView>(R.id.card_view_note)
+    inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        private val ui: MainItemBinding = MainItemBinding.bind(itemView)
 
         fun bind(note: Note) {
+            ui.titleMainItem.text = note.title
+            ui.textMainItem.text = note.note
 
-            title.text = note.title
-            text.text = note.note
-            cardView.setCardBackgroundColor(note.color)
+            val color = when (note?.color) {
+                Color.WHITE -> R.color.color_white
+                Color.VIOLET -> R.color.color_violet
+                Color.YELLOW -> R.color.color_yello
+                Color.RED -> R.color.color_red
+                Color.PINK -> R.color.color_pink
+                Color.GREEN -> R.color.color_green
+                Color.BLUE -> R.color.color_blue
+
+            }
+            ui.cardViewNote.setCardBackgroundColor(itemView.context.resources.getColor(color))
+            itemView.setOnClickListener { onItemClickListener.onItemClick(note) }
         }
     }
 }
