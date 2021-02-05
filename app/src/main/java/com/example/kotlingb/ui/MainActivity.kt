@@ -3,11 +3,15 @@ package com.example.kotlingb.ui
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kotlingb.R
 import com.example.kotlingb.databinding.ActivityMainBinding
+import com.example.kotlingb.model.Note
 import com.example.kotlingb.ui.MainViewState
+import com.example.kotlingb.ui.note.NoteActivity
 import com.example.kotlingb.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var ui: ActivityMainBinding
     lateinit var viewModel: MainViewModel
     lateinit var adapter: MainAdapter
-    private lateinit var linearLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,14 +32,29 @@ class MainActivity : AppCompatActivity() {
         setContentView(ui.root)
         Log.v(TAG, "onCreate")
 
-        linearLayoutManager = LinearLayoutManager(this)
+    fun test(note: Note) {}
+
+
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        adapter = MainAdapter()
-        ui.mainRecycler.layoutManager = linearLayoutManager
+        setSupportActionBar(ui.toolbar)
+
+        adapter = MainAdapter(object : OnItemClickListener {
+            override fun onItemClick(note: Note) {
+                openNoteScreen(note)
+            }
+
+        })
         ui.mainRecycler.adapter = adapter
 
         viewModel.viewState().observe(this,{
             it?.let { adapter.notes = it.notes }
         })
+
+        ui.fab.setOnClickListener { openNoteScreen() }
+    }
+
+    private fun openNoteScreen(note: Note? = null) {
+        val intent = NoteActivity.getStartIntent(this, note)
+        startActivity(intent)
     }
 }
